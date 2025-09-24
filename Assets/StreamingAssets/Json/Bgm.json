@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 60001,
+    "Bgm": "Title",
+    "Pitch": 1,
+    "IsLoop": true
+  },
+  {
+    "Id": 60002,
+    "Bgm": "GameMain",
+    "Pitch": 1,
+    "IsLoop": true
+  }
+]

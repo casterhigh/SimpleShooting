@@ -1,0 +1,17 @@
+[
+  {
+    "Id": 900001,
+    "Key": "BgmVolume",
+    "Value": 0.5
+  },
+  {
+    "Id": 900002,
+    "Key": "SeVolume",
+    "Value": 0.5
+  },
+  {
+    "Id": 900003,
+    "Key": "TargetFrameRate",
+    "Value": 60
+  }
+]
