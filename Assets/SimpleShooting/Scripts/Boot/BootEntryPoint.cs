@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer.Unity;
 
-public class BootEntryPoint : MonoBehaviour
+namespace SimpleShooting.Boot
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BootEntryPoint : IInitializable
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Initialize()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

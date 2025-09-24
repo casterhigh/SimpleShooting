@@ -1,18 +1,11 @@
+using Infrastructure.Messaging;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackResponse : MonoBehaviour
+namespace SimpleShooting.Messaging.Response
 {
-    // Start is called before the first frame update
-    void Start()
+    public record PlayerAttackResponse : IMessage
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SimpleShooting.Domain.DTO
+namespace SimpleShooting.Presentation.Main
 {
-    public class EnemyDTO
+    public class InformationView : MonoBehaviour
     {
     }
 }

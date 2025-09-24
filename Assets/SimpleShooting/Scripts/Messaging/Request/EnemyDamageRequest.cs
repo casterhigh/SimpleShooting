@@ -1,18 +1,11 @@
+using Infrastructure.Messaging;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamageRequest : MonoBehaviour
+namespace SimpleShooting.Messaging.Request
 {
-    // Start is called before the first frame update
-    void Start()
+    public record EnemyDamageRequest : IMessage
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

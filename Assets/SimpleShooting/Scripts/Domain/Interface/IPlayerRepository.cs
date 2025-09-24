@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IPlayerRepository : MonoBehaviour
+namespace SimpleShooting.Domain.Interface
 {
-    // Start is called before the first frame update
-    void Start()
+    public interface IPlayerRepository
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

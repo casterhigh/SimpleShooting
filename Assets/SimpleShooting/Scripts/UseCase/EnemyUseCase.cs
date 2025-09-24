@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyUseCase : MonoBehaviour
+namespace SimpleShooting.UseCase
 {
-    // Start is called before the first frame update
-    void Start()
+    public class EnemyUseCase
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
