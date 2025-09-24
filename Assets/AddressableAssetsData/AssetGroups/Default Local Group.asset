@@ -17,6 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 1e91c1c9eb12e4fff966fe3e3ad43852
   m_SerializeEntries:
+  - m_GUID: 1b4a6aa9ef3f241f0b9e0a2b9d0fba8d
+    m_Address: Enemy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66942d7b0a1e741c4927de55d8bebd3f
+    m_Address: Bullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6c6008aaccae84ba9bceca11a64fac73
     m_Address: Cancel
     m_ReadOnly: 0
@@ -27,13 +37,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac3b6974925bd4ff5916364e5dfd8b96
+    m_Address: Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b08e4672ad8824f76b01dd94649cbc38
     m_Address: Submit
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b3c7f99c46e714043a9fa574a1223e01
-    m_Address: SampleDialog
+    m_Address: Dialog
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -43,7 +58,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fd9f7e23faad04cecadff31e426f1787
-    m_Address: GameMain
+    m_Address: Main
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

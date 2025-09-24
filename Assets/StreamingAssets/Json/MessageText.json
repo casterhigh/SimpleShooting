@@ -1,0 +1,17 @@
+[
+  {
+    "Id": 110001,
+    "Key": "OKButton",
+    "Value": "了解"
+  },
+  {
+    "Id": 110002,
+    "Key": "CancelButton",
+    "Value": "キャンセル"
+  },
+  {
+    "Id": 110003,
+    "Key": "CloseButton",
+    "Value": "閉じる"
+  }
+]

@@ -7,7 +7,7 @@
   },
   {
     "Id": 60002,
-    "Bgm": "GameMain",
+    "Bgm": "Main",
     "Pitch": 1,
     "IsLoop": true
   }

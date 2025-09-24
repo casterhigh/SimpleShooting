@@ -13,5 +13,10 @@
     "Id": 900003,
     "Key": "TargetFrameRate",
     "Value": 60
+  },
+  {
+    "Id": 900004,
+    "Key": "EnemyCreateCount",
+    "Value": 100
   }
 ]

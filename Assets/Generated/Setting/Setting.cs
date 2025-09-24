@@ -4,5 +4,6 @@ namespace Generated {
         public const string BgmVolume = "BgmVolume";
         public const string SeVolume = "SeVolume";
         public const string TargetFrameRate = "TargetFrameRate";
+        public const string EnemyCreateCount = "EnemyCreateCount";
     }
 }
