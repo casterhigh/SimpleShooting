@@ -1,21 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer.Unity;
 
 namespace SimpleShooting.Title
 {
-    public class TitleEntryPoint : MonoBehaviour
+    public class TitleEntryPoint : IInitializable
     {
-        // Start is called before the first frame update
-        void Start()
+        public void Initialize()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            throw new NotImplementedException();
         }
     }
 }
