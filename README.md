@@ -1,4 +1,4 @@
 # SimpleShooting
 
 ## Unityバージョン
-2022.3.45f1
+2022.3.62f1
