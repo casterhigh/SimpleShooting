@@ -1,21 +1,21 @@
+using Cysharp.Threading.Tasks;
+using Infrastructure.Interface.View.UI;
+using Infrastructure.Messaging;
+using Infrastructure.View.Dialog;
+using Infrastructure.View.Dialog.Messaging.Request;
+using Infrastructure.View.Dialog.Messaging.Response;
+using Infrastructure.View.Logger.Interface;
+using Infrastructure.View.UI.Interface;
+using Infrastructure.View.UI.Messaging;
 using MessagePipe;
 using R3;
-using Infrastructure.Interface.View.UI;
-using Cysharp.Threading.Tasks;
-using Infrastructure.View.Dialog;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using VContainer;
 using VContainer.Unity;
-using Infrastructure.View.Dialog.Messaging.Request;
-using Infrastructure.View.Dialog.Messaging.Response;
-using Infrastructure.Messaging;
-using Infrastructure.View.UI.Interface;
-using Infrastructure.View.UI.Messaging;
-using Infrastructure.View.Logger.Interface;
-using UnityEngine;
 using ILogger = Infrastructure.View.Logger.Interface.ILogger;
-using System;
-using System.Collections.Generic;
 
 namespace Infrastructure.View.UI.Management
 {
@@ -124,7 +124,7 @@ namespace Infrastructure.View.UI.Management
         async UniTask OpenDialog(CommonDialogData dialogData)
         {
             var dialog = await Addressables.InstantiateAsync(dialogData.DialogPrefabName);
-            WaitForCloseDialogRequest(dialog, dialogData.ContinueDialog).Forget();
+            WaitForCloseDialogRequest(dialog, dialogData.ContinueDialog, dialogData.RequirePage).Forget();
             dialogPageView = dialog.GetComponent<IDialogPageView>();
             resolver.InjectGameObject(dialogPageView.GameObject);
             dialogPageView.SetData(dialogData);
@@ -132,7 +132,7 @@ namespace Infrastructure.View.UI.Management
             publisher.Publish(new OpenDialogResponse());
         }
 
-        async UniTask WaitForCloseDialogRequest(GameObject dialog, bool continueDialog)
+        async UniTask WaitForCloseDialogRequest(GameObject dialog, bool continueDialog, string requirePage)
         {
             var tcs = new UniTaskCompletionSource<CloseDialogRequest>();
             var result = false;
@@ -152,7 +152,7 @@ namespace Infrastructure.View.UI.Management
             dialogPageView = null;
             Addressables.Release(dialog);
 
-            publisher.Publish(new CloseDialogResponse(result, continueDialog));
+            publisher.Publish(new CloseDialogResponse(result, continueDialog, requirePage));
         }
     }
 }

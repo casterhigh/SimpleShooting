@@ -8,10 +8,13 @@ namespace Infrastructure.View.Dialog.Messaging.Response
 
         public bool ContinueDialog { get; }
 
-        public CloseDialogResponse(bool result, bool continueDialog)
+        public string RequirePage { get; }
+
+        public CloseDialogResponse(bool result, bool continueDialog, string requirePage)
         {
             Result = result;
             ContinueDialog = continueDialog;
+            RequirePage = requirePage;
         }
     }
 }

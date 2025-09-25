@@ -5,5 +5,9 @@ namespace SimpleShooting.Domain.Repository
 {
     public class PlayerRepository : IPlayerRepository
     {
+        public void Load()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

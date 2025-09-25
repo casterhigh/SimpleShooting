@@ -1,23 +1,23 @@
 using Cysharp.Threading.Tasks;
+using Generated.Enums;
+using Infrastructure.Enums;
+using Infrastructure.Input.Generated.Enum;
+using Infrastructure.Input.Messaging.Response;
+using Infrastructure.Messaging;
+using Infrastructure.Messaging.Sound.Request;
+using Infrastructure.View.Dialog.Messaging.Request;
+using Infrastructure.View.Direction.Interface;
+using Infrastructure.View.UI.Interface;
 using MessagePipe;
 using R3;
+using System;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VContainer;
-using Infrastructure.Input.Generated.Enum;
-using Infrastructure.Input.Messaging.Response;
-using Infrastructure.Messaging.Sound.Request;
-using Infrastructure.View.Dialog.Messaging.Request;
-using Infrastructure.Messaging;
-using Infrastructure.View.Direction.Interface;
-using Infrastructure.Enums;
-using Infrastructure.View.UI.Interface;
-using UnityEngine;
 using ILogger = Infrastructure.View.Logger.Interface.ILogger;
-using Generated.Enums;
-using System.Collections.Generic;
-using System;
 
 namespace Infrastructure.View.Dialog
 {
@@ -33,13 +33,16 @@ namespace Infrastructure.View.Dialog
 
         public bool ContinueDialog { get; }
 
-        public CommonDialogData(string title, string message, DialogKind dialogKind, string dialogPrefabName, bool continueDialog)
+        public string RequirePage { get; }
+
+        public CommonDialogData(string title, string message, DialogKind dialogKind, string dialogPrefabName, bool continueDialog, string requirePage)
         {
             Title = title;
             Message = message;
             DialogKind = dialogKind;
             DialogPrefabName = dialogPrefabName;
             ContinueDialog = continueDialog;
+            RequirePage = requirePage;
         }
     }
 

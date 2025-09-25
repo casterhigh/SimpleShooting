@@ -1,18 +1,22 @@
 using Cysharp.Threading.Tasks;
+using Infrastructure.Interface.View.UI;
+using Infrastructure.Messaging;
+using Infrastructure.Presentation.Interface;
+using Infrastructure.Scenes.Interface;
+using Infrastructure.View.UI.Loading.Messaging.Request;
+using Infrastructure.View.UI.Messaging;
+using MessagePipe;
+using System;
+using System.Linq;
 using UnityEngine.SceneManagement;
 using VContainer;
 using VContainer.Unity;
-using MessagePipe;
-using Infrastructure.Messaging;
-using Infrastructure.Scenes.Interface;
-using Infrastructure.View.UI.Loading.Messaging.Request;
-using Infrastructure.Interface.View.UI;
-using Infrastructure.View.UI.Messaging;
-using System.Linq;
-using System;
 
 namespace Infrastructure.Scenes
 {
+    /// <summary>
+    /// todo:PageManagerのようにインターフェース参照させずにMessageを購読してから処理を走るようにする
+    /// </summary>
     public class SceneChanger : ISceneChanger
     {
         IObjectResolver resolver;
@@ -52,17 +56,27 @@ namespace Infrastructure.Scenes
             var scene = SceneManager.GetSceneByName(sceneName);
             await UniTask.WaitWhile(() => !scene.isLoaded);
 
-            var pages = scene.GetRootGameObjects()
+            var roots = scene.GetRootGameObjects();
+            var pages = roots
             .SelectMany(go => go.GetComponentsInChildren<IPageView>(true))
             .Where(p => !string.IsNullOrEmpty(p.PageName))
             .GroupBy(p => p.PageName)
             .ToDictionary(g => g.Key, g => g.First());
+
+            // todo:ここはマスターと同じようにMessageを飛ばしてLoadFinishのレスポンスを待つようにしたい
+            var loaderTasks = roots
+            .SelectMany(root => root.GetComponentsInChildren<IResourceLoader>(true))
+            .Select(loader => loader.Load())
+            .ToList();
+
+            await UniTask.WhenAll(loaderTasks);
 
             if (!string.IsNullOrEmpty(firstPageName) && !pages.ContainsKey(firstPageName))
             {
                 throw new InvalidOperationException($"{firstPageName}は存在していません");
             }
 
+            // todo:ここはマスターと同じようにMessageを飛ばしてInitializeFinishのレスポンスを待つようにしたい
             foreach (var kvp in pages)
             {
                 var page = kvp.Value;

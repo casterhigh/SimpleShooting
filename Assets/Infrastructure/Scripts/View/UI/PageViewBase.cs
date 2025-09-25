@@ -1,6 +1,6 @@
+using Infrastructure.Interface.View.UI;
 using R3;
 using UnityEngine;
-using Infrastructure.Interface.View.UI;
 
 namespace Infrastructure.View.UI
 {
@@ -10,8 +10,14 @@ namespace Infrastructure.View.UI
 
         protected virtual bool ShowingDialog { get; set; }
 
+        /// <summary>
+        /// nameof()で継承クラスを指定する
+        /// </summary>
         public abstract string PageName { get; }
 
+        /// <summary>
+        /// 親クラスの処理はなし
+        /// </summary>
         public virtual void Initialize() { }
 
         public virtual void Open()

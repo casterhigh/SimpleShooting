@@ -1,11 +1,11 @@
-using Infrastructure.Messaging;
 using System.Collections;
 using System.Collections.Generic;
+using Infrastructure.Messaging;
 using UnityEngine;
 
 namespace SimpleShooting.Messaging.Request
 {
-    public record ResumeRequest : IMessage
+    public record ResumeGameRequest : IMessage
     {
     }
 }
