@@ -3,9 +3,9 @@
 //
 //  Created by kan.kikuchi on 2019.09.16.
 
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
@@ -63,7 +63,7 @@ public class AddressableAssetAddressClassCreator : AssetPostprocessor
     //=================================================================================
 
     //定数クラス作成
-    [MenuItem("Infrastructure/Tools/Create/AddressableAsset Constants Class")]
+    [MenuItem("Infrastructure/Tools/Generate/AddressableAsset Constants Class")]
     private static void Create()
     {
 

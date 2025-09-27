@@ -48,7 +48,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b3c7f99c46e714043a9fa574a1223e01
-    m_Address: Dialog
+    m_Address: CommonDialog
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Generated;
 using Generated.Enums;
 using Infrastructure.Enums;
 using Infrastructure.Input.Generated.Enum;
@@ -66,6 +67,15 @@ namespace Infrastructure.View.Dialog
         [SerializeField]
         GameObject directionObj;
 
+        [SerializeField]
+        TextMeshProUGUI okButtonText;
+
+        [SerializeField]
+        TextMeshProUGUI cancelButtonText;
+
+        [SerializeField]
+        TextMeshProUGUI closeButtonText;
+
         IPublisher<IMessage> publisher;
 
         ISubscriber<IMessage> subscriber;
@@ -97,6 +107,10 @@ namespace Infrastructure.View.Dialog
             okButton.OnClickAsObservable().Subscribe(_ => OnOkButtonClick()).AddTo(this);
             closeButton.OnClickAsObservable().Subscribe(_ => OnCloseButtonClick()).AddTo(this);
             cancelButton.OnClickAsObservable().Subscribe(_ => OnCloseButtonClick()).AddTo(this);
+
+            okButtonText.text = MessageText.OKButton;
+            cancelButtonText.text = MessageText.CancelButton;
+            closeButtonText.text = MessageText.CloseButton;
 
             Subscribe();
         }

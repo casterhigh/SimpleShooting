@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 182219955376487333}
   - component: {fileID: 8144782616351434695}
   m_Layer: 5
-  m_Name: Dialog
+  m_Name: CommonDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,6 +406,9 @@ MonoBehaviour:
   cancelButton: {fileID: 8607508436635086410}
   closeButton: {fileID: 7339378911405461327}
   directionObj: {fileID: 2098384197390663337}
+  okButtonText: {fileID: 8152956242917693533}
+  cancelButtonText: {fileID: 1618778335997643397}
+  closeButtonText: {fileID: 4535517713955063271}
 --- !u!95 &7774039907426387931
 Animator:
   serializedVersion: 5

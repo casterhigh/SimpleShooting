@@ -128,14 +128,26 @@ echo "namespace Generated {" >> "$MESSAGE_FILE"
 echo "    public static class MessageText {" >> "$MESSAGE_FILE"
 
 # jq で Key のみを抽出
-jq -r '.[] | .Key' "$MESSAGE_JSON_FILE" | while read key; do
+jq -r '.[] | "\(.Key)\t\(.Value)"' "$MESSAGE_JSON_FILE" | while IFS=$'\t' read -r key value; do
     # C# 定数名として安全に変換
     safeKey=$(echo "$key" | sed 's/[^a-zA-Z0-9_]/_/g')
     if [[ $safeKey =~ ^[0-9] ]]; then
         safeKey="_$safeKey"
     fi
-    echo "        public const string $safeKey = \"$key\";" >> "$MESSAGE_FILE"
+
+    # 予約語対策（例: class, namespace など）
+    case "$safeKey" in
+        class|namespace|event|return|new|public|private|internal)
+            safeKey="_${safeKey}"
+            ;;
+    esac
+
+    # Value を C# の文字列リテラル用にエスケープ
+    escapedValue=$(printf '%s' "$value" | sed 's/\\/\\\\/g; s/"/\\"/g')
+
+    echo "        public const string $safeKey = \"$escapedValue\";" >> "$MESSAGE_FILE"
 done
+
 
 echo "    }" >> "$MESSAGE_FILE"
 echo "}" >> "$MESSAGE_FILE"
