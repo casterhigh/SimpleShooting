@@ -1,3 +1,4 @@
+using Generated.DAO;
 using Infrastructure.Domain.Interface.Repository;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,5 +8,6 @@ namespace SimpleShooting.Domain.Interface
 {
     public interface IEnemyRepository : ILoadRepository
     {
+        EnemyDao PickUpEnemy(bool isBoss);
     }
 }

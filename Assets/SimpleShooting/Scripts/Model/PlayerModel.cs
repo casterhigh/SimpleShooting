@@ -8,24 +8,29 @@ namespace SimpleShooting.Model
 {
     public class PlayerModel : IPlayerModel
     {
-        readonly IPlayerRepository repository;
+        readonly IPlayerRepository playerRepository;
 
-        int gameEnemyId;
+        readonly IPlayerCalculator playerCalculator;
 
-        public PlayerModel(IPlayerRepository repository)
+        public PlayerModel(IPlayerRepository playerRepository,
+        IPlayerCalculator playerCalculator)
         {
-            this.repository = repository;
+            this.playerRepository = playerRepository;
+            this.playerCalculator = playerCalculator;
         }
 
         public PlayerDTO CrateDto(Vector3 position)
         {
             var id = new ID(1);
-            return new PlayerDTO();
+            var dao = playerRepository.Get();
+            return dao.CreateDTO(position);
         }
 
-        public PlayerDTO ReceiveDamage(PlayerDTO dto)
+        public PlayerDTO ReceiveDamage(PlayerDTO player, EnemyDTO enemy)
         {
-            return dto;
+            var damage = playerCalculator.ReceiveDamage(player, enemy);
+            player.UpdateHp(damage);
+            return player;
         }
     }
 }

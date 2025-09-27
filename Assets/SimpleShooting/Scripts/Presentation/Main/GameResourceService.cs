@@ -17,15 +17,19 @@ namespace SimpleShooting.Presentation.Main
 
         ISubscriber<IMessage> subscriber;
 
+        IObjectResolver resolver;
+
         ILogger logger;
 
         [Inject]
         public void Construct(IPublisher<IMessage> publisher,
         ISubscriber<IMessage> subscriber,
+        IObjectResolver resolver,
         ILogger logger)
         {
             this.publisher = publisher;
             this.subscriber = subscriber;
+            this.resolver = resolver;
             this.logger = logger;
 
             Subscribe();

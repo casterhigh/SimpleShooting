@@ -5,8 +5,8 @@ namespace Generated.DAO
 {
 
     [MessagePackObject(true)]
-    [JsonMapping("Character.json")]
-    public partial class CharacterDao
+    [JsonMapping("Player.json")]
+    public partial class PlayerDao
     {
         [BsonId]
         public long Id { get; set; }

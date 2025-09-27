@@ -7,8 +7,8 @@ namespace SimpleShooting.Model.Interface
 {
     public interface IEnemyModel
     {
-        EnemyDTO CrateDto(Vector3 position);
+        EnemyDTO CrateDto(Vector3 position, bool isBoss);
 
-        EnemyDTO ReceiveDamage(EnemyDTO dto);
+        EnemyDTO ReceiveDamage(EnemyDTO enemy, PlayerDTO player);
     }
 }

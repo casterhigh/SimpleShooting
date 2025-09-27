@@ -1,3 +1,4 @@
+using Generated;
 using Infrastructure.Enums;
 using Infrastructure.Messaging;
 using Infrastructure.View.Dialog;
@@ -61,7 +62,7 @@ namespace SimpleShooting.Presentation.Main
 
         void OnExitButtonClick()
         {
-            var dialogData = new CommonDialogData("", "ゲームを終了しますか？", DialogKind.YesNo, "Dialog", false, PageName);
+            var dialogData = new CommonDialogData("", MessageText.GameExit, DialogKind.YesNo, AddressableAssetAddress.COMMON_DIALOG, false, PageName);
             publisher.Publish(new OpenDialogRequest(dialogData));
         }
 

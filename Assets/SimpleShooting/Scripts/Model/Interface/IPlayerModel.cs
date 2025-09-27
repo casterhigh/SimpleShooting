@@ -9,6 +9,6 @@ namespace SimpleShooting.Model.Interface
     {
         PlayerDTO CrateDto(Vector3 position);
 
-        PlayerDTO ReceiveDamage(PlayerDTO dto);
+        PlayerDTO ReceiveDamage(PlayerDTO player, EnemyDTO enemy);
     }
 }
