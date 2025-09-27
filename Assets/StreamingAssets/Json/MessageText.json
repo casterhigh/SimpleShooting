@@ -13,5 +13,15 @@
     "Id": 110003,
     "Key": "CloseButton",
     "Value": "閉じる"
+  },
+  {
+    "Id": 110004,
+    "Key": "GameExit",
+    "Value": "ゲームを終了しますか？"
+  },
+  {
+    "Id": 110005,
+    "Key": "GoToTitle",
+    "Value": "タイトルへ"
   }
 ]
