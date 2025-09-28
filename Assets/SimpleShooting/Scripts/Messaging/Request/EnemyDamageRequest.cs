@@ -1,3 +1,4 @@
+using Infrastructure.Domain;
 using Infrastructure.Messaging;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,5 +8,11 @@ namespace SimpleShooting.Messaging.Request
 {
     public record EnemyDamageRequest : IMessage
     {
+        public ID EnemyId { get; }
+
+        public EnemyDamageRequest(ID enemyId)
+        {
+            EnemyId = enemyId;
+        }
     }
 }

@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace SimpleShooting.Messaging.Response
 {
-    public record SpawnEnemyResponse : IMessage
+    public record GetPlayerDTOResponse : IMessage
     {
-        public EnemyDTO Enemy { get; }
+        public PlayerDTO Player { get; }
 
-        public SpawnEnemyResponse(EnemyDTO enemy)
+        public GetPlayerDTOResponse(PlayerDTO player)
         {
-            Enemy = enemy;
+            Player = player;
         }
     }
 }

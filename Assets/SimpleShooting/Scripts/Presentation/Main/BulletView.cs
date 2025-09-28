@@ -1,10 +1,21 @@
+using Infrastructure.ObjectPooling;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace SimpleShooting.Presentation.Main
 {
-    public class BulletView : MonoBehaviour
+    public class BulletView : MonoBehaviour, IPoolable
     {
+        public void OnRent()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnReturn()
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 }

@@ -38,7 +38,9 @@ namespace SimpleShooting.Model
             gameEnemyId++;
             var id = new ID(gameEnemyId);
             var dao = enemyRepository.PickUpEnemy(isBoss);
-            return dao.CreateDTO(id, position);
+            var dto = dao.CreateDTO(id, position);
+            enemies.Add(id, dto);
+            return dto;
         }
 
         public EnemyDTO ReceiveDamage(EnemyDTO enemy, PlayerDTO player)

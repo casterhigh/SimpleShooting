@@ -1,3 +1,4 @@
+using Infrastructure.Domain;
 using Infrastructure.Messaging;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,13 +6,13 @@ using UnityEngine;
 
 namespace SimpleShooting.Messaging.Request
 {
-    public record SpawnEnemyRequest : IMessage
+    public record GetEnemyDTORequest : IMessage
     {
-        public Vector3 Position { get; }
+        public ID EnemyId { get; }
 
-        public SpawnEnemyRequest(Vector3 position)
+        public GetEnemyDTORequest(ID enemyId)
         {
-            Position = position;
+            EnemyId = enemyId;
         }
     }
 }

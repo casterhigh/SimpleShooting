@@ -48,7 +48,7 @@ namespace SimpleShooting.Presentation.Main
         async UniTask SpawnEnemy()
         {
             await UniTask.CompletedTask;
-            publisher.Publish(new SpawnEnemyRequest()); // ここで出現するVector3の座標を渡してあげる
+            publisher.Publish(new SpawnEnemyRequest(Vector3.zero)); // ここで出現するVector3の座標を渡してあげる
         }
     }
 }
