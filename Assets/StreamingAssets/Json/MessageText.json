@@ -16,11 +16,16 @@
   },
   {
     "Id": 110004,
+    "Key": "ReturnGame",
+    "Value": "ゲームへ戻る"
+  },
+  {
+    "Id": 110005,
     "Key": "GameExit",
     "Value": "ゲームを終了しますか？"
   },
   {
-    "Id": 110005,
+    "Id": 110006,
     "Key": "GoToTitle",
     "Value": "タイトルへ"
   }
