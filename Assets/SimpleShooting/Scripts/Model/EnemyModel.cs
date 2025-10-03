@@ -43,11 +43,22 @@ namespace SimpleShooting.Model
             return dto;
         }
 
-        public EnemyDTO ReceiveDamage(EnemyDTO enemy, PlayerDTO player)
+        public EnemyDTO ReceiveDamage(ID id, PlayerDTO player)
         {
+            var enemy = GetEnemyDTO(id);
             var damage = enemyCalculator.ReceiveDamage(enemy, player);
             enemy.UpdateHp(damage);
             return enemy;
+        }
+
+        public EnemyDTO GetEnemyDTO(ID id)
+        {
+            if (!enemies.ContainsKey(id))
+            {
+                throw new InvalidOperationException($"{id.Value.Value}に対応する敵はいません。");
+            }
+
+            return enemies[id];
         }
     }
 }

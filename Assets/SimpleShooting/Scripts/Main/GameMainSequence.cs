@@ -1,7 +1,10 @@
+using Generated;
 using Infrastructure.Messaging;
 using Infrastructure.View.UI.Messaging;
 using MessagePipe;
 using R3;
+using SimpleShooting.Enums;
+using SimpleShooting.Messaging.Request;
 using SimpleShooting.Messaging.Response;
 using SimpleShooting.Presentation.Main;
 using System;
@@ -11,7 +14,7 @@ using ILogger = Infrastructure.View.Logger.Interface.ILogger;
 
 namespace SimpleShooting.Main
 {
-    public class MainUIProvider : IDisposable
+    public class GameMainSequence : IDisposable
     {
         readonly IPublisher<IMessage> publisher;
 
@@ -19,12 +22,17 @@ namespace SimpleShooting.Main
 
         readonly CompositeDisposable disposable;
 
-        public MainUIProvider(IPublisher<IMessage> publisher,
+        int enemyKillCount;
+
+        const int ClearKillCount = 100;
+
+        public GameMainSequence(IPublisher<IMessage> publisher,
         ISubscriber<IMessage> subscriber)
         {
             this.publisher = publisher;
             this.subscriber = subscriber;
             disposable = new();
+            enemyKillCount = 0;
 
             Subscribe();
         }
@@ -49,6 +57,31 @@ namespace SimpleShooting.Main
                 if (msg is ResumeGameResponse)
                 {
                     publisher.Publish(new CloseAllPage());
+                }
+            }).AddTo(disposable);
+
+            subscriber.Subscribe(msg =>
+            {
+                if (msg is EnemyDamageResponse response)
+                {
+                    if (!response.Enemy.IsDead) return;
+
+                    enemyKillCount++;
+                    if (ClearKillCount <= enemyKillCount)
+                    {
+                        publisher.Publish(new FinishGameRequest(GameFinishKind.Win));
+                    }
+                }
+            }).AddTo(disposable);
+
+            subscriber.Subscribe(msg =>
+            {
+                if (msg is PlayerDamageResponse response)
+                {
+                    if (response.Player.IsDead)
+                    {
+                        publisher.Publish(new FinishGameRequest(GameFinishKind.Lose));
+                    }
                 }
             }).AddTo(disposable);
         }

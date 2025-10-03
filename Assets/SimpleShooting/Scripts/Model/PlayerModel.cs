@@ -12,6 +12,8 @@ namespace SimpleShooting.Model
 
         readonly IPlayerCalculator playerCalculator;
 
+        PlayerDTO player;
+
         public PlayerModel(IPlayerRepository playerRepository,
         IPlayerCalculator playerCalculator)
         {
@@ -23,13 +25,19 @@ namespace SimpleShooting.Model
         {
             var id = new ID(1);
             var dao = playerRepository.Get();
-            return dao.CreateDTO(position);
+            player = dao.CreateDTO(id, position);
+            return player;
         }
 
-        public PlayerDTO ReceiveDamage(PlayerDTO player, EnemyDTO enemy)
+        public PlayerDTO ReceiveDamage(EnemyDTO enemy)
         {
             var damage = playerCalculator.ReceiveDamage(player, enemy);
             player.UpdateHp(damage);
+            return player;
+        }
+
+        public PlayerDTO GetPlayer()
+        {
             return player;
         }
     }

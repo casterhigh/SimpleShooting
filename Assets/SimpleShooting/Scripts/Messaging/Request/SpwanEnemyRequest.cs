@@ -9,9 +9,12 @@ namespace SimpleShooting.Messaging.Request
     {
         public Vector3 Position { get; }
 
-        public SpawnEnemyRequest(Vector3 position)
+        public bool IsBoss { get; }
+
+        public SpawnEnemyRequest(Vector3 position, bool isBoss)
         {
             Position = position;
+            IsBoss = isBoss;
         }
     }
 }

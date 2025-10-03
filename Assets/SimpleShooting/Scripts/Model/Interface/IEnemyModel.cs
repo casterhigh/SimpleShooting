@@ -1,3 +1,4 @@
+using Infrastructure.Domain;
 using SimpleShooting.Domain.DTO;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ namespace SimpleShooting.Model.Interface
     {
         EnemyDTO CrateDto(Vector3 position, bool isBoss);
 
-        EnemyDTO ReceiveDamage(EnemyDTO enemy, PlayerDTO player);
+        EnemyDTO ReceiveDamage(ID id, PlayerDTO player);
+
+        EnemyDTO GetEnemyDTO(ID id);
     }
 }
